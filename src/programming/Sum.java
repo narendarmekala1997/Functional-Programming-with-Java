@@ -20,7 +20,8 @@ public class Sum {
 		
 		return numbers.stream()
 				//.reduce(0, Sum::add);
-				.reduce(0, (x,y) -> x+y );
+				//.reduce(0, (x,y) -> x+y );
+				.reduce(0, Integer::sum);
 	}
 
 }
