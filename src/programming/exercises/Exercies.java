@@ -50,7 +50,7 @@ public class Exercies {
 	//exercise-6
 	public static void printNumbersOfCharactersInCourseName(List<String> courses) {
 		courses.stream()
-		.map( s -> s.length())
+		.map( s -> s+" "+ s.length())
 		.forEach(System.out::println);
 	}
 }
