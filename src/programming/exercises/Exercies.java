@@ -1,6 +1,7 @@
 package programming.exercises;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Exercies {
 
@@ -16,7 +17,11 @@ public class Exercies {
 		//printNumbersOfCharactersInCourseName(courses);
 		//System.out.println(printSumOfSquares(numbers));
 		//System.out.println(printSumOfCubes(numbers));
-		System.out.println(printSumOfOddNumbers(numbers));
+		//System.out.println(printSumOfOddNumbers(numbers));
+		List<Integer> evenNumbrs = evenNumbers(numbers);
+		//System.out.println(evenNumbrs);
+		List<Integer> courseTitleLengths = lengthOfCourseTitles(courses);
+		System.out.println(courseTitleLengths);
 		
 	}
 	//exercise-1
@@ -76,5 +81,18 @@ public class Exercies {
 		return numbers.stream()
 				.filter( x -> x%2 !=0 )
 				.reduce(0,(x,y)->x+y);
+	}
+	//exercise-10
+	public static List<Integer> evenNumbers(List<Integer> numbers){
+		return numbers.stream()
+				.filter( x-> x%2==0 )
+				.collect(Collectors.toList());
+	}
+	//exercise-11
+	public static List<Integer> lengthOfCourseTitles(List<String> courses){
+		return courses.stream()
+				.map( s -> s.length())
+				.collect(Collectors.toList());
+				
 	}
 }
