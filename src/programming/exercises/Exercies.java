@@ -6,14 +6,18 @@ public class Exercies {
 
 	public static void main(String[] args) {
 
-		List<Integer> numbers = List.of(1,2,3,4,5,6,7,8,9);
+		List<Integer> numbers = List.of(1,2,3,4,5);
 		List<String> courses = List.of("Spring","Spring Boot","API","Microservices","AWS","PCF","Azure","Docker","Kubernetes");
 		//printOddNumbers(numbers);
 		//printCourses(courses);
 		//printCoursesContainingSpring(courses);
 		//printCourseNameWithAtleas4Letters(courses);
 		//printCubersOfOddNumbers(numbers);
-		printNumbersOfCharactersInCourseName(courses);
+		//printNumbersOfCharactersInCourseName(courses);
+		//System.out.println(printSumOfSquares(numbers));
+		//System.out.println(printSumOfCubes(numbers));
+		System.out.println(printSumOfOddNumbers(numbers));
+		
 	}
 	//exercise-1
 	public static void printOddNumbers(List<Integer> numbers) {
@@ -52,5 +56,25 @@ public class Exercies {
 		courses.stream()
 		.map( s -> s+" "+ s.length())
 		.forEach(System.out::println);
+	}
+	//exercise-7
+	public static int printSumOfSquares(List<Integer> numbers)
+	{
+		return numbers.stream()
+				.map( x -> x*x )
+			   .reduce(0, (x,y)-> x+y);		   
+	}
+	//exercise-8
+	public static int printSumOfCubes(List<Integer> numbers) {
+		
+		return numbers.stream()
+				.map(x -> x*x*x)
+				.reduce(0, (x,y)->x+y);
+	}
+	//exercise-9
+	public static int printSumOfOddNumbers(List<Integer> numbers) {
+		return numbers.stream()
+				.filter( x -> x%2 !=0 )
+				.reduce(0,(x,y)->x+y);
 	}
 }
