@@ -95,7 +95,30 @@ public class CustomClass {
 				courses.stream()
 				.sorted(comparingByNoOfStudentsAndNoOfReviews)
 				.collect(Collectors.toList()));
-
+		//limit
+		System.out.println(
+				courses.stream()
+				.sorted(comparingByNoOfStudentsAndNoOfReviews)
+				.limit(5)
+				.collect(Collectors.toList()));
+		//skip
+		System.out.println(
+				courses.stream()
+				.sorted(comparingByNoOfStudentsAndNoOfReviews)
+				.skip(3)
+				.collect(Collectors.toList()));
+		
+		//takeWhile
+		System.out.println(
+				courses.stream()
+				.takeWhile(course -> course.getReviewScore() >=95 )
+				.collect(Collectors.toList()));
+		
+		//dropWhile
+		System.out.println(
+				courses.stream()
+				.dropWhile(course -> course.getReviewScore() >=95 )
+				.collect(Collectors.toList()));
 	}
 
 }
