@@ -1,7 +1,9 @@
 package programming;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 class Course{
 	
@@ -73,6 +75,26 @@ public class CustomClass {
 		//Any Match
 		System.out.println(courses.stream().anyMatch(reviewScoreGreaterThan95Predicate ));
 		
+		Comparator comparingByNoOfStudentsIncreasing = Comparator.comparing(Course::getNoOfStudents);
+		System.out.println(
+				courses.stream()
+				.sorted(comparingByNoOfStudentsIncreasing)
+				.collect(Collectors.toList()));
+		
+		Comparator comparingByNoOfStudentsDecreasing = Comparator.comparing(Course::getNoOfStudents).reversed();
+		System.out.println(
+				courses.stream()
+				.sorted(comparingByNoOfStudentsDecreasing)
+				.collect(Collectors.toList()));
+		
+		Comparator comparingByNoOfStudentsAndNoOfReviews 
+													= Comparator.comparing(Course::getNoOfStudents)
+																.thenComparing(Course::getReviewScore)
+																.reversed();
+		System.out.println(
+				courses.stream()
+				.sorted(comparingByNoOfStudentsAndNoOfReviews)
+				.collect(Collectors.toList()));
 
 	}
 
