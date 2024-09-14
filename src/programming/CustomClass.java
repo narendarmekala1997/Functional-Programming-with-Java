@@ -119,6 +119,36 @@ public class CustomClass {
 				courses.stream()
 				.dropWhile(course -> course.getReviewScore() >=95 )
 				.collect(Collectors.toList()));
+		//Max  -> Returns last element of the List
+		System.out.println(
+				courses.stream()
+					.max(comparingByNoOfStudentsAndNoOfReviews));
+		//Min --> Returns the First element of the List
+		System.out.println(
+				courses.stream()
+					.min(comparingByNoOfStudentsAndNoOfReviews));
+		
+		//printing default value if no value is returned
+		System.out.println(
+				courses.stream()
+				.filter(reviewScoreLessThan90Predicate )
+				.min(comparingByNoOfStudentsAndNoOfReviews)
+				.orElse(new Course("Kubernetes","cloud",91,20000))
+				);
+		//Find First
+		System.out.println(
+				courses.stream()
+				.filter(reviewScoreGreaterThan95Predicate )
+				.findFirst()
+				);
+		//FindAny
+		
+				System.out.println(
+						courses.stream()
+						.filter(reviewScoreGreaterThan95Predicate )
+						.findAny()
+						);
+		
 	}
 
 }
