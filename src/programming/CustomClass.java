@@ -142,12 +142,47 @@ public class CustomClass {
 				.findFirst()
 				);
 		//FindAny
-		
 				System.out.println(
 						courses.stream()
 						.filter(reviewScoreGreaterThan95Predicate )
 						.findAny()
 						);
+		//Sum
+		System.out.println(
+				courses.stream()
+				.filter(reviewScoreGreaterThan95Predicate )
+				.mapToInt(Course::getNoOfStudents)
+				.sum());
+		//Average
+		System.out.println(
+				courses.stream()
+				.filter(reviewScoreGreaterThan95Predicate )
+				.mapToInt(Course::getNoOfStudents)
+				.average());
+		//count
+		System.out.println(
+				courses.stream()
+				.filter(reviewScoreGreaterThan95Predicate )
+				.mapToInt(Course::getNoOfStudents)
+				.count());
+		//Grouping
+		System.out.println(
+				courses.stream()
+		.collect(Collectors.groupingBy(Course::getCategory)));
+		//count
+		System.out.println(
+				courses.stream()
+		.collect(Collectors.groupingBy(Course::getCategory,Collectors.counting())));
+		//highest rating on specific category
+		System.out.println(
+				courses.stream()
+		.collect(Collectors.groupingBy(Course::getCategory,Collectors.maxBy(Comparator.comparing(Course::getReviewScore)))));
+
+		System.out.println(
+				courses.stream()
+		.collect(Collectors.groupingBy(Course::getCategory,
+				Collectors.mapping(Course::getName,Collectors.toList())
+				)));
 		
 	}
 
